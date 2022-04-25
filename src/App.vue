@@ -1,21 +1,56 @@
 <!-- https://www.youtube.com/watch?v=qZXt1Aom3Cs&t=1517s 
-     34:56-nal 
+     49:00-nal 
 -->
 
 <template>
   <div class="container">
     <Header title="Task Tracker" />
+    <Tasks @delete-task="deleteTask" v-bind:tasks="tasks" />
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
+import Tasks from './components/Tasks'
 
 export default {
   name: 'App',
   components: {
-    Header,    
+    Header,
+    Tasks    
   },
+  data() {
+    return{
+      tasks: []  
+    }
+  },
+  methods: {
+    deleteTask(id){
+      console.log('task', id);
+    }
+  },
+  created(){
+    this.tasks = [
+      {
+        id: 1,
+        text: "Doctors appointment",
+        day: "March 21 at 2:30pm",
+        reminder: true
+      },
+      {
+        id: 2,
+        text: "Meeting",
+        day: "April 22 at 2:30pm",
+        reminder: true
+      },
+      {
+        id: 3,
+        text: "Carwash",
+        day: "March 21 at 1:30pm",
+        reminder: false
+      },
+    ]
+  }
 }
 </script>
 
