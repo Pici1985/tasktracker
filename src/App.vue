@@ -1,12 +1,13 @@
 <!-- https://www.youtube.com/watch?v=qZXt1Aom3Cs&t=1517s 
-     49:00-nal 
+     1:05:06-nal 
 -->
 
 <template>
   <div class="container">
-    <Header title="Task Tracker" />
-    <AddTask 
-        @add-task="addTask"/>
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" />
+    <div v-if="showAddTask">
+      <AddTask @add-task="addTask"/>
+    </div>
     <Tasks 
         @delete-task="deleteTask" 
         @toggle-reminder="toggleReminder"
@@ -29,7 +30,8 @@ export default {
   },
   data() {
     return{
-      tasks: []  
+      tasks: [],
+      showAddTask: false,  
     }
   },
   methods: {
@@ -45,6 +47,9 @@ export default {
     toggleReminder(id){
       // console.log(id);
       this.tasks = this.tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task );
+    },
+    toggleAddTask(){
+      this.showAddTask = !this.showAddTask;
     },
   },
   created(){
