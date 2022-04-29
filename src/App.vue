@@ -39,8 +39,18 @@ export default {
     }
   },
   methods: {
-    addTask(task){
-      this.tasks = [...this.tasks, task]
+    async addTask(task){
+      const request = await fetch('api/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(task)
+      })
+
+      const data = await res.json()
+
+      this.tasks = [...this.tasks, data]
     },
     deleteTask(id){
       // console.log('task', id);
@@ -55,28 +65,23 @@ export default {
     toggleAddTask(){
       this.showAddTask = !this.showAddTask;
     },
+    async fetchTasks() {
+      const res = await fetch('api/tasks')
+      
+      const data = await res.json()
+
+      return data
+    },
+    async fetchTask(id) {
+      const res = await fetch(`api/tasks/${id}`)
+      
+      const data = await res.json()
+
+      return data
+    }
   },
-  created(){
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doctors appointment",
-        day: "March 21 at 2:30pm",
-        reminder: true
-      },
-      {
-        id: 2,
-        text: "Meeting",
-        day: "April 22 at 2:30pm",
-        reminder: true
-      },
-      {
-        id: 3,
-        text: "Carwash",
-        day: "March 21 at 1:30pm",
-        reminder: false
-      },
-    ]
+  async created(){
+    this.tasks = await this.fetchTasks();
   }
 }
 </script>
