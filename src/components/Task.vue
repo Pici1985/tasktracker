@@ -26,6 +26,10 @@
   color: red;
 }
 
+.fas:hover {
+  transform: scale(1.5);
+}
+
 .task {
   background: #f4f4f4;
   margin: 5px;

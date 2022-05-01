@@ -1,16 +1,3 @@
 {
-  "tasks": [
-    {
-      "text": "AddTask",
-      "day": "Add task",
-      "reminder": true,
-      "id": "dLhq7Uf"
-    },
-    {
-      "text": "Code Shit",
-      "day": "now",
-      "reminder": true,
-      "id": "KPP3uz9"
-    }
-  ]
+  "tasks": []
 }

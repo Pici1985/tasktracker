@@ -1,22 +1,10 @@
-<!-- https://www.youtube.com/watch?v=qZXt1Aom3Cs&t=1517s 
-     1:45:50-nal 
--->
-
 <template>
   <div class="container">
     <Header 
       @toggle-add-task="toggleAddTask" 
-      title="Task Tracker" 
+      title="Task Tracker App" 
       v-bind:showAddTask="showAddTask"  
       />
-    <!-- <div v-if="showAddTask">
-      <AddTask @add-task="addTask"/>
-    </div>
-    <Tasks 
-        @delete-task="deleteTask" 
-        @toggle-reminder="toggleReminder"
-        v-bind:tasks="tasks" 
-        /> -->
     <router-view :showAddTask="showAddTask"></router-view>
     <Footer />
   </div>
@@ -60,7 +48,7 @@ body {
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 1px solid green;
   padding: 30px;
   border-radius: 5px;
 }
